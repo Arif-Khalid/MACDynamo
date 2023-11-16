@@ -13,7 +13,7 @@ researching and analysing, just use MACDynamo!
 8. Use the ordering you find in key_template.txt to fill in your login details and server in the newly created key.txt. You can find the server of your account by double clicking your account in the navigator. The default server is MetaQuotes-Demo.
 
 # Customisation
-In bot_vars.py, you can set the number of hours you want the bot to run for along with whether you want all open orders to be closed at the end of life.
+In bot_vars.py, you can set the a few variables to customise the behaviour of the bot. Explanations of what the variables do can be found in the file itself.
 
 Note that you need to have your computer running for that amount of time else the bot will stop and likely leave open orders.
 
