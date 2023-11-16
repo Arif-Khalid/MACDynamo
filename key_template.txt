@@ -1,0 +1,3 @@
+my_meta5_login_id
+my_meta5_login_password
+my_meta5_server
