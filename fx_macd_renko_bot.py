@@ -21,13 +21,7 @@ if mt5.initialize(path=path, login=int(key[0]), password=key[1], server=key[2]):
     print("connection established")
 #%%
 # defining strategy parameters
-pairs = [
-    "EURUSD",
-    "GBPUSD",
-    "USDCHF",
-    "AUDUSD",
-    "USDCAD",
-]  # currency pairs to be included in the strategy
+pairs = bot_vars.currencyPairs[:]  # currency pairs to be included in the strategy
 pos_size = 0.5  # max capital allocated/position size for any currency pair. in MT5 the size is in unit of 10^5
 
 
