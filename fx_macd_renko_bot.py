@@ -7,6 +7,7 @@ import datetime as dt
 from stocktrends import Renko
 import time
 import copy
+import bot_vars
 
 os.chdir(
     r"C:\PythonProjects\TradingBot\bot"
@@ -260,7 +261,7 @@ def main(profits, closeAll = False):
 # Continuous execution
 starttime = time.time()
 timeout = (
-    time.time() + 60 * 60 * 7
+    time.time() + 60 * 60 * bot_vars.runTimeInhours
 )  # 60 seconds times 60 meaning the script will run for 1 hr
 initialInvestment = 0
 for currency in pairs:
@@ -284,9 +285,10 @@ while time.time() <= timeout:
     except KeyboardInterrupt:
         print("\n\nKeyboard exception received. Exiting.")
         exit()
-times.append(time.strftime("%H:%M:%S", time.localtime(time.time())))
-main(profits, True)
-print(profits)
+if(bot_vars.closeOpenOrdersOnEnd):
+    times.append(time.strftime("%H:%M:%S", time.localtime(time.time())))
+    main(profits, True)
+print("Profits: ",profits[1:])
 
 
 
@@ -307,25 +309,3 @@ returnsDf.set_index('time')
 print(returnsDf)
 returnsDf.plot(x='time', y='cum_ret')
 returnsDf.plot(x='time', y='ret')
-# df = pd.DataFrame({
-#     'time': times,
-#     'profits': profits.loc[1:],
-#     'returns': returns.loc[1:],
-# })
-# df.plot(x='time', y='profits')
-# df.plot(x='time', y='returns')
-# %%
-A = ["Bob", "Amy"]
-B = [None, 100, 200]
-print(pd.DataFrame({
-    'time': A,
-    'value': B[1:],
-}).set_index('time'))
-
-# %%
-print(get_5m_candles('EURUSD'))
-
-# %%
-main([], True)
-
-# %%
